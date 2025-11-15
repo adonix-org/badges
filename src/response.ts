@@ -25,7 +25,7 @@ import { BADGE_CACHE } from "./cache";
  */
 export class SVGBadge extends SuccessResponse {
     /**
-     * Constructs an `SVGBadge` response.
+     * Constructs a secure `SVGBadge` response.
      *
      * @param svg - The SVG string.
      * @param cache - Optional cache control headers. Defaults to `s-maxage` of 1 year.
@@ -33,5 +33,15 @@ export class SVGBadge extends SuccessResponse {
     constructor(svg: string, cache = BADGE_CACHE) {
         super(svg, cache);
         this.mediaType = "image/svg+xml; charset=utf-8";
+
+        /**
+         * Security headers
+         */
+        this.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+        this.setHeader(
+            "Content-Security-Policy",
+            "default-src 'none'; script-src 'none'; style-src 'none'; img-src 'none';"
+        );
+        this.setHeader("X-Content-Type-Options", "nosniff");
     }
 }

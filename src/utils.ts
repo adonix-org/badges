@@ -19,6 +19,18 @@ import { BadgenOptions, StyleOption } from "badgen";
 const VALID_PARAMS = ["style", "color", "labelcolor", "icon", "iconwidth", "scale"];
 
 /**
+ * Escape text for safe SVG injection
+ */
+function escapeSVGText(str: string): string {
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+/**
  * Normalize URLSearchParams for consistent processing and caching.
  *
  * - Converts all parameter keys to lowercase.
@@ -30,7 +42,7 @@ const VALID_PARAMS = ["style", "color", "labelcolor", "icon", "iconwidth", "scal
  */
 export function normalize(searchParams: URLSearchParams): URLSearchParams {
     const entries = Array.from(searchParams.entries())
-        .map(([key, value]) => [key.toLowerCase(), value] as [string, string])
+        .map(([key, value]) => [key.toLowerCase(), escapeSVGText(value)])
         .filter(([key]) => VALID_PARAMS.includes(key));
 
     entries.sort(([a], [b]) => a.localeCompare(b));
