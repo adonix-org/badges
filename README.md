@@ -11,10 +11,10 @@ Generate dynamic SVG badges.
 | `iconWidth`  | Number (pixels)                            | Width of the icon in pixels.                                                                  |
 | `scale`      | Number (e.g., `1.0`, `1.5`)                | Scales the entire badge proportionally. Useful for adjusting size for high-DPI screens.       |
 
-# Example:
+## Example:
 
-```text
-https://badges.adonix.org/Hello%20World/v1.0.1?scale=4
+```
+https://badges.adonix.org/Hello%20World/v1.0.1?color=orange&scale=4
 ```
 
-![Default](https://badges.adonix.org/Hello%20World/v1.0.1?color=orange&scale=4)
+![Example](https://badges.adonix.org/Hello%20World/v1.0.1?color=orange&scale=4)
