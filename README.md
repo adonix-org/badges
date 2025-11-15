@@ -1,6 +1,6 @@
 # :shield: Badges
 
-<p style="font-size:22px;">Generate dynamic SVG badges.</p>
+Generate dynamic SVG badges.
 
 <br>
 
