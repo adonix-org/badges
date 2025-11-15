@@ -14,10 +14,23 @@
  * limitations under the License.
  */
 
-import { CacheControl, SuccessResponse, Time } from "@adonix.org/cloud-spark";
+import { SuccessResponse } from "@adonix.org/cloud-spark";
+import { BADGE_CACHE } from "./cache";
 
+/**
+ * A response class for serving SVG content with proper headers.
+ *
+ * Sets the `Content-Type` to `image/svg+xml; charset=utf-8`
+ * and applies cache control headers (defaulting to 1 year s-maxage).
+ */
 export class SVGBadge extends SuccessResponse {
-    constructor(svg: string, cache: CacheControl = { "s-maxage": 1 * Time.Year }) {
+    /**
+     * Constructs an `SVGBadge` response.
+     *
+     * @param svg - The SVG string.
+     * @param cache - Optional cache control headers. Defaults to `s-maxage` of 1 year.
+     */
+    constructor(svg: string, cache = BADGE_CACHE) {
         super(svg, cache);
         this.mediaType = "image/svg+xml; charset=utf-8";
     }
