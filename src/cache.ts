@@ -21,8 +21,8 @@ import { normalize } from "./utils";
  * Default caching for generated badges is 1 year.
  */
 export const BADGE_CACHE: CacheControl = {
-    "max-age": 1 * Time.Minute,
-    "s-maxage": 1 * Time.Minute,
+    "max-age": 1 * Time.Year,
+    "s-maxage": 1 * Time.Year,
     immutable: true,
 };
 
@@ -40,6 +40,5 @@ export const BADGE_CACHE: CacheControl = {
 export function getKey(request: Request): URL {
     const url = new URL(request.url);
     url.search = normalize(url.searchParams).toString();
-    console.info(url.href);
     return url;
 }
