@@ -14,13 +14,6 @@
  * limitations under the License.
  */
 
-const redCircleIcon = `
-data:image/svg+xml;utf8,
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <circle cx="16" cy="16" r="14" fill="transparent" stroke="red" stroke-width="4"/>
-</svg>
-`.trim();
-
 import { BadgenOptions, StyleOption } from "badgen";
 
 const VALID_PARAMS = ["style", "color", "labelcolor", "icon", "iconwidth", "scale"];

@@ -1,0 +1,44 @@
+/*
+ * Copyright (C) 2025 Ty Busby
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const ROOT = "https://badges.adonix.org";
+
+document.getElementById("scale").addEventListener("input", (e) => {
+    document.getElementById("scale-val").innerText = e.target.value;
+});
+
+document.getElementById("generate").onclick = () => {
+    const label = document.getElementById("label").value.trim();
+    const status = document.getElementById("status").value.trim();
+    const color = document.getElementById("color").value.trim();
+    const style = document.getElementById("style").value;
+    const scale = document.getElementById("scale").value;
+
+    if (!label || !status) {
+        alert("Label and Status are required");
+        return;
+    }
+
+    const params = new URLSearchParams();
+    if (color) params.set("color", color);
+    if (style) params.set("style", style);
+    if (scale) params.set("scale", scale);
+
+    const url = `${ROOT}/${encodeURIComponent(label)}/${encodeURIComponent(status)}?${params}`;
+
+    document.getElementById("url-output").innerText = url;
+    document.getElementById("badge-preview").src = url;
+};
