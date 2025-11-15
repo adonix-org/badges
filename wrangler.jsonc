@@ -21,5 +21,7 @@
     "compatibility_date": "2025-11-15",
     "observability": {
         "enabled": true
-    }
+    },
+    "preview_urls": false,
+    "assets": { "directory": "./public/", "binding": "public" }
 }

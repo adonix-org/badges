@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Badge Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .field {
+            margin: 12px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        #preview-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #badge-preview {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 8px;
+            background: #fafafa;
+            min-height: 40px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 16px;
+            font-size: 1rem;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fcc;
+        }
+
+        #url-output {
+            font-family: monospace;
+            margin-top: 20px;
+            padding: 10px;
+            background: #f3f3f3;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Badge Generator</h1>
+
+    <div class="field">
+        <label for="label">Label</label>
+        <input id="label" placeholder="build" />
+    </div>
+
+    <div class="field">
+        <label for="status">Status</label>
+        <input id="status" placeholder="passing" />
+    </div>
+
+    <div class="field">
+        <label for="color">Color (preset or hex without #)</label>
+        <input id="color" placeholder="08c or 3C1 or ADF" />
+    </div>
+
+    <div class="field">
+        <label for="style">Style</label>
+        <select id="style">
+            <option value="">classic</option>
+            <option value="flat">flat</option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="scale">Scale: <span id="scale-val">1</span></label>
+        <input id="scale" type="range" min="1" max="10" value="1" />
+    </div>
+
+    <button id="generate">Generate Badge</button>
+
+    <div id="preview-container">
+        <div id="url-output">(Badge URL will appear here)</div>
+        <img id="badge-preview" alt="Badge preview">
+    </div>
+
+    <script>
+        const ROOT = "https://badges.adonix.org";
+
+        document.getElementById("scale").addEventListener("input", (e) => {
+            document.getElementById("scale-val").innerText = e.target.value;
+        });
+
+        document.getElementById("generate").onclick = () => {
+            const label = document.getElementById("label").value.trim();
+            const status = document.getElementById("status").value.trim();
+            const color = document.getElementById("color").value.trim();
+            const style = document.getElementById("style").value;
+            const scale = document.getElementById("scale").value;
+
+            if (!label || !status) {
+                alert("Label and Status are required");
+                return;
+            }
+
+            const params = new URLSearchParams();
+            if (color) params.set("color", color);
+            if (style) params.set("style", style);
+            if (scale) params.set("scale", scale);
+
+            const url = `${ROOT}/${encodeURIComponent(label)}/${encodeURIComponent(status)}?${params}`;
+
+            document.getElementById("url-output").innerText = url;
+            document.getElementById("badge-preview").src = url;
+        };
+    </script>
+
+</body>
+
+</html>

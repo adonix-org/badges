@@ -1,3 +1,3 @@
 # :shield: Badges
 
-Build dynamic SVG badges.
+Generate dynamic SVG badges.
