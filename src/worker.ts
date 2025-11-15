@@ -20,12 +20,29 @@ import { SVGBadge } from "./response";
 import { getOptions } from "./utils";
 import { getKey } from "./cache";
 
+/**
+ * Worker responsible for generating SVG badges.
+ *
+ * Registers the route:
+ *   GET /:label/:status
+ * which produces a badge using the `badgen` library.
+ */
 export class BadgeWorker extends RouteWorker {
+    /**
+     * Initialize routes and cache middleware.
+     */
     protected override init(): void {
         this.route(GET, "/:label/:status", this.generate);
         this.use(cache({ getKey }));
     }
 
+    /**
+     * Generate an SVG badge for the given label, status,
+     * and optional search parameters.
+     *
+     * @param params - URL path parameters containing `label` and `status`.
+     * @returns A Response containing an SVG badge.
+     */
     protected generate(params: PathParams): Promise<Response> {
         const searchParams = new URL(this.request.url).searchParams;
 
@@ -34,6 +51,13 @@ export class BadgeWorker extends RouteWorker {
         return this.response(SVGBadge, badgen(options));
     }
 
+    /**
+     * Default handler for unmatched GET routes.
+     *
+     * Returns a simple “404 Not Found” badge.
+     *
+     * @returns A Response containing a red 404 badge.
+     */
     protected override get(): Promise<Response> {
         const error = badgen({
             label: "404",
