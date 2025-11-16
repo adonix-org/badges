@@ -29,13 +29,6 @@ import { generatedBy, securePolicy } from "./middleware";
  * which produces a badge using the `badgen` library.
  */
 export class BadgeWorker extends RouteWorker {
-    constructor(request: Request, env: Env, ctx: ExecutionContext) {
-        const headers = new Headers(request.headers);
-        headers.delete("cache-control");
-        headers.delete("pragma");
-        super(new Request(request, { headers }), env, ctx);
-    }
-
     /**
      * Initialize routes and middleware.
      */
