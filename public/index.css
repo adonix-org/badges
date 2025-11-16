@@ -37,6 +37,10 @@ select {
     border-radius: 6px;
 }
 
+select {
+    appearance: none;
+}
+
 #badge-preview {
     max-width: 100%;
     object-fit: contain;
