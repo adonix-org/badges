@@ -13,7 +13,7 @@ Generate dynamic SVG badges.
 | `labelColor` | String (e.g., `"blue"`, `"555"`)           | Background color of the **label** section of the badge.                                       |
 | `icon`       | String (icon name or URL)                  | Optional icon to display on the left side of the badge.                                       |
 | `iconWidth`  | Number (pixels)                            | Width of the icon in pixels.                                                                  |
-| `scale`      | Number (e.g., `1.0`, `1.5`)                | Scales the entire badge proportionally. Useful for adjusting size for high-DPI screens.       |
+| `scale`      | Number (e.g., `1.0`, `1.5`)                | Scales the badge proportionally.                                                              |
 
 ## Example:
 
