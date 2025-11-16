@@ -33,15 +33,5 @@ export class SVGBadge extends SuccessResponse {
     constructor(svg: string, cache = BADGE_CACHE) {
         super(svg, cache);
         this.mediaType = "image/svg+xml; charset=utf-8";
-
-        /**
-         * Security headers
-         */
-        this.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-        this.setHeader(
-            "Content-Security-Policy",
-            "default-src 'none'; script-src 'none'; style-src 'none'; img-src 'none';"
-        );
-        this.setHeader("X-Content-Type-Options", "nosniff");
     }
 }
