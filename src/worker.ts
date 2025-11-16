@@ -19,7 +19,7 @@ import { badgen } from "badgen";
 import { SVGBadge } from "./svg";
 import { getOptions } from "./utils";
 import { getKey } from "./cache";
-import { generatedBy as generatedBy, securePolicy } from "./middleware";
+import { generatedBy, securePolicy } from "./middleware";
 
 /**
  * Worker responsible for generating SVG badges.
