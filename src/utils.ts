@@ -16,6 +16,19 @@
 
 import { BadgenOptions, StyleOption } from "badgen";
 
+/** Maximum allowed badge scale to prevent rendering issues */
+const MAX_SCALE = 10;
+
+/** Default badge scale when none is provided or invalid */
+const DEFAULT_SCALE = 1;
+
+/** Maximum base icon width (in internal units) for visual balance */
+const MAX_ICON_WIDTH = 30;
+
+/** Default base icon width (in internal units) */
+const DEFAULT_ICON_WIDTH = 13;
+
+/** Whitelisted query parameters allowed for badge generation */
 const VALID_PARAMS = ["style", "color", "labelcolor", "icon", "iconwidth", "scale"];
 
 /**
@@ -93,7 +106,10 @@ export function getOptions(label: string, status: string, search: URLSearchParam
         color: searchParams.get("color") ?? undefined,
         labelColor: searchParams.get("labelcolor") ?? undefined,
         icon: searchParams.get("icon") ?? undefined,
-        iconWidth: getNumber(searchParams, "iconwidth", 13),
-        scale: getNumber(searchParams, "scale", 1),
+        iconWidth: Math.min(
+            getNumber(searchParams, "iconwidth", DEFAULT_ICON_WIDTH),
+            MAX_ICON_WIDTH
+        ),
+        scale: Math.min(getNumber(searchParams, "scale", DEFAULT_SCALE), MAX_SCALE),
     };
 }
