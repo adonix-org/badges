@@ -20,42 +20,41 @@
 </head>
 
 <body>
-    <h1><img src="https://badges.adonix.org/Badge/Generator?color=007bff&scale=3.5"></h1>
+    <main>
+        <h1><img id="badge-preview" alt="Badge preview" src="https://badges.adonix.org/Badge/Generator?scale=3.5"></h1>
 
-    <div class="field">
-        <label for="label">Label</label>
-        <input id="label" placeholder="build" />
-    </div>
+        <div class="field">
+            <label for="label">Label</label>
+            <input id="label" placeholder="Badge" value="Badge" />
+        </div>
 
-    <div class="field">
-        <label for="status">Status</label>
-        <input id="status" placeholder="passing" />
-    </div>
+        <div class="field">
+            <label for="label-color">Label Color</label>
+            <input id="label-color" placeholder="555" />
+        </div>
 
-    <div class="field">
-        <label for="color">Color (preset or hex without #)</label>
-        <input id="color" placeholder="08c or 3C1 or ADF" />
-    </div>
+        <div class="field">
+            <label for="status">Status</label>
+            <input id="status" placeholder="passing" value="Generator" />
+        </div>
 
-    <div class="field">
-        <label for="style">Style</label>
-        <select id="style">
-            <option value="">classic</option>
-            <option value="flat">flat</option>
-        </select>
-    </div>
+        <div class="field">
+            <label for="color">Color</label>
+            <input id="color" placeholder="08C" />
+        </div>
 
-    <div class="field">
-        <label for="scale">Scale: <span id="scale-val">1</span></label>
-        <input id="scale" type="range" min="1" max="10" value="1" />
-    </div>
+        <div class="field">
+            <label for="style">Style</label>
+            <select id="style">
+                <option value="">classic</option>
+                <option value="flat">flat</option>
+            </select>
+        </div>
 
-    <button id="generate">Generate</button>
+        <button id="generate">Generate</button>
 
-    <div id="preview-container">
-        <div id="url-output">(Badge URL will appear here)</div>
-        <img id="badge-preview" alt="Badge preview">
-    </div>
+        <div id="url-output"></div>
+    </main>
 </body>
 
 </html>

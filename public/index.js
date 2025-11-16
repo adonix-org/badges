@@ -16,16 +16,12 @@
 
 const ROOT = "https://badges.adonix.org";
 
-document.getElementById("scale").addEventListener("input", (e) => {
-    document.getElementById("scale-val").innerText = e.target.value;
-});
-
 document.getElementById("generate").onclick = () => {
     const label = document.getElementById("label").value.trim();
     const status = document.getElementById("status").value.trim();
+    const labelColor = document.getElementById("label-color").value.trim();
     const color = document.getElementById("color").value.trim();
     const style = document.getElementById("style").value;
-    const scale = document.getElementById("scale").value;
 
     if (!label || !status) {
         alert("Label and Status are required");
@@ -34,11 +30,11 @@ document.getElementById("generate").onclick = () => {
 
     const params = new URLSearchParams();
     if (color) params.set("color", color);
+    if (labelColor) params.set("labelColor", labelColor);
     if (style) params.set("style", style);
-    if (scale) params.set("scale", scale);
 
     const url = `${ROOT}/${encodeURIComponent(label)}/${encodeURIComponent(status)}?${params}`;
 
     document.getElementById("url-output").innerText = url;
-    document.getElementById("badge-preview").src = url;
+    document.getElementById("badge-preview").src = `${url}&scale=3.5`;
 };

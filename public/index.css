@@ -1,10 +1,16 @@
 body {
     font-family: system-ui, sans-serif;
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 20px;
-    line-height: 1.6;
     color: #222;
+    background-color: #222;
+}
+
+main {
+    max-width: 500px;
+    background-color: white;
+    padding: 2rem;
+    line-height: 1.6;
+    border-radius: 1rem;
+    margin: 40px auto;
 }
 
 h1 {
@@ -31,18 +37,9 @@ select {
     border-radius: 6px;
 }
 
-#preview-container {
-    text-align: center;
-    margin-top: 30px;
-}
-
 #badge-preview {
-    margin-top: 20px;
-    border: 1px solid #ddd;
-    padding: 12px;
-    border-radius: 8px;
-    background: #fafafa;
-    min-height: 40px;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 button {
@@ -50,14 +47,14 @@ button {
     padding: 10px 16px;
     font-size: 1rem;
     border: none;
-    background: #007bff;
+    background: #0088cc;
     color: white;
     border-radius: 6px;
     cursor: pointer;
 }
 
 button:hover {
-    background: #005fcc;
+    background: #0077bb;
 }
 
 #url-output {
@@ -67,4 +64,6 @@ button:hover {
     background: #f3f3f3;
     border-radius: 6px;
     border: 1px solid #ddd;
+    min-height: 1.3rem;
+    overflow-wrap: break-word;
 }
