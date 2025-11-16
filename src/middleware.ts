@@ -22,8 +22,8 @@ import { CopyResponse, Middleware, Worker } from "@adonix.org/cloud-spark";
  *
  * @returns A middleware instance.
  */
-export function generator(): Middleware {
-    return new Generator();
+export function generatedBy(): Middleware {
+    return new GeneratedBy();
 }
 
 /**
@@ -36,16 +36,12 @@ export function securePolicy(): Middleware {
     return new SecurePolicy();
 }
 
-/**
- * Middleware implementation for generator().
- * Adds a static X-Generator identifier header.
- */
-class Generator implements Middleware {
+class GeneratedBy implements Middleware {
     /**
      * Apply an X-Generator header to the response.
      *
      * @param _worker The current worker instance (unused).
-     * @param next The next middleware in the chain.
+     * @param next The next response provider in the chain.
      * @returns The updated response.
      */
     public async handle(_worker: Worker, next: () => Promise<Response>): Promise<Response> {
@@ -55,17 +51,13 @@ class Generator implements Middleware {
     }
 }
 
-/**
- * Middleware implementation for securePolicy().
- * Sets restrictive security policy headers on the response.
- */
 class SecurePolicy implements Middleware {
     /**
      * Apply security-related headers (CSP, CORP, no-sniff)
      * to the outgoing response.
      *
      * @param _worker The current worker instance (unused).
-     * @param next The next middleware in the chain.
+     * @param next The next response provider in the chain.
      * @returns The updated response.
      */
     public async handle(_worker: Worker, next: () => Promise<Response>): Promise<Response> {
