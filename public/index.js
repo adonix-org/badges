@@ -33,8 +33,10 @@ document.getElementById("generate").onclick = () => {
     if (labelColor) params.set("labelColor", labelColor);
     if (style) params.set("style", style);
 
-    const url = `${ROOT}/${encodeURIComponent(label)}/${encodeURIComponent(status)}?${params}`;
+    const url = `${ROOT}/${encodeURIComponent(label)}/${encodeURIComponent(status)}`;
 
-    document.getElementById("url-output").innerText = url;
-    document.getElementById("badge-preview").src = `${url}&scale=3.5`;
+    document.getElementById("url-output").innerText = `${url}${params.size ? "?" + params : ""}`;
+
+    params.append("scale", "3.5");
+    document.getElementById("badge-preview").src = `${url}?${params}`;
 };

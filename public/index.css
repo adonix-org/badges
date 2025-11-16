@@ -64,6 +64,5 @@ button:hover {
     background: #f3f3f3;
     border-radius: 6px;
     border: 1px solid #ddd;
-    min-height: 1.3rem;
     overflow-wrap: break-word;
 }
