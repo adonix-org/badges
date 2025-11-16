@@ -30,7 +30,7 @@ import { generatedBy, securePolicy } from "./middleware";
  */
 export class BadgeWorker extends RouteWorker {
     /**
-     * Initialize routes and cache middleware.
+     * Initialize routes and middleware.
      */
     protected override init(): void {
         this.route(GET, "/:label/:status", this.generate);
