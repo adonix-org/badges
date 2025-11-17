@@ -35,8 +35,10 @@ document.getElementById("generate").onclick = () => {
 
     const url = `${ROOT}/${encodeURIComponent(label)}/${encodeURIComponent(status)}`;
 
-    document.getElementById("url-output").innerText = `${url}${params.size ? "?" + params : ""}`;
+    document.getElementById("url-output").innerText = `${url}${
+        params.size ? "?" + params.toString() : ""
+    }`;
 
     params.append("scale", "3.5");
-    document.getElementById("badge-preview").src = `${url}?${params}`;
+    document.getElementById("badge-preview").src = `${url}?${params.toString()}`;
 };

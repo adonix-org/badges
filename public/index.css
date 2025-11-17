@@ -20,6 +20,7 @@ body {
     color: #222;
     background-color: #222;
     user-select: none;
+    -webkit-user-select: none;
 }
 
 main {
@@ -101,4 +102,5 @@ button {
     border: 1px solid #ddd;
     overflow-wrap: anywhere;
     user-select: text;
+    -webkit-user-select: text;
 }
