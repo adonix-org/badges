@@ -1,6 +1,6 @@
 # :shield: Badges
 
-Generate static SVG badges with [badgen](https://github.com/badgen/badgen).
+Generate static SVG badges with [cloud-spark](https://github.com/adonix-org/cloud-spark) and [badgen](https://github.com/badgen/badgen).
 
 <br>
 
