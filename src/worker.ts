@@ -60,12 +60,13 @@ export class BadgeWorker extends RouteWorker {
      *
      * Returns a simple “404 Not Found” badge.
      *
-     * @returns A Response containing a red 404 badge.
+     * @returns An SVG Response containing a red 404 badge.
      */
     protected override get(): Promise<Response> {
         const error = makeBadge({
             label: "404",
             message: "Not Found",
+            style: "flat-square",
             color: "red",
         });
         return this.response(SVGBadge, error);
