@@ -19,6 +19,7 @@ body {
     overflow-x: hidden;
     color: #222;
     background-color: #222;
+    user-select: none;
 }
 
 main {
@@ -56,13 +57,6 @@ select {
     appearance: none;
 }
 
-.badge-preview {
-    max-width: 100%;
-    object-fit: contain;
-    margin: auto;
-    padding-bottom: 2rem;
-}
-
 button {
     padding: 10px 16px;
     font-size: 1rem;
@@ -71,6 +65,16 @@ button {
     color: white;
     border-radius: 6px;
     flex: 0 0 auto;
+}
+
+.badge {
+    padding-bottom: 2rem;
+}
+
+.badge-preview {
+    max-width: 100%;
+    object-fit: contain;
+    margin: auto;
 }
 
 .generate {
@@ -96,4 +100,5 @@ button {
     border-radius: 6px;
     border: 1px solid #ddd;
     overflow-wrap: anywhere;
+    user-select: text;
 }
