@@ -1,6 +1,6 @@
 # :shield: Badges
 
-[![Apache 2.0 License](https://badges.adonix.org/License/Apache%202.0)](https://github.com/adonix-org/badges/blob/main/LICENSE)
+[![Apache 2.0 License](https://badges.adonix.org/License/Apache%202.0?color=green)](https://github.com/adonix-org/badges/blob/main/LICENSE)
 [![Cloudflare](https://badges.adonix.org/Cloudflare/Worker?color=orange)](https://cloudflare.com)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=adonix-org_badges&metric=alert_status)](https://sonarcloud.io/summary/overall?id=adonix-org_badges&branch=main)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=adonix-org_badges&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=adonix-org_badges)
