@@ -76,10 +76,15 @@ button {
 .generate {
     align-self: flex-start;
     margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .generate:hover {
     background: #0077bb;
+}
+
+.generate:active {
+    box-shadow: none;
 }
 
 #url-output {
