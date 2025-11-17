@@ -101,6 +101,6 @@ button {
     border-radius: 6px;
     border: 1px solid #ddd;
     overflow-wrap: anywhere;
-    user-select: text;
-    -webkit-user-select: text;
+    user-select: auto;
+    -webkit-user-select: auto;
 }
