@@ -29,18 +29,18 @@ const MAX_ICON_WIDTH = 30;
 const DEFAULT_ICON_WIDTH = 13;
 
 /** Whitelisted query parameters allowed for badge generation */
-const VALID_PARAMS = ["style", "color", "labelcolor", "icon", "iconwidth", "scale"];
+const VALID_PARAMS = new Set(["style", "color", "labelcolor", "icon", "iconwidth", "scale"]);
 
 /**
  * Escape text for safe SVG injection
  */
 function escapeSVGText(str: string): string {
     return str
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
 }
 
 /**
@@ -56,7 +56,7 @@ function escapeSVGText(str: string): string {
 export function normalize(searchParams: URLSearchParams): URLSearchParams {
     const entries = Array.from(searchParams.entries())
         .map(([key, value]) => [key.toLowerCase(), escapeSVGText(value)])
-        .filter(([key]) => VALID_PARAMS.includes(key));
+        .filter(([key]) => VALID_PARAMS.has(key));
 
     entries.sort(([a], [b]) => a.localeCompare(b));
 

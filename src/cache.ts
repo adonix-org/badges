@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { CacheControl, sortSearchParams, Time } from "@adonix.org/cloud-spark";
+import { CacheControl, Time } from "@adonix.org/cloud-spark";
 import { normalize } from "./utils";
 
 /**
