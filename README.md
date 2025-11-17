@@ -1,6 +1,6 @@
 # :shield: Badges
 
-Generate static SVG badges
+Generate static SVG badges with [badgen](https://github.com/badgen/badgen).
 
 <br>
 
