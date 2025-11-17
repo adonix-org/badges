@@ -104,7 +104,7 @@ function getStyle(searchParams: URLSearchParams): BadgeStyle | undefined {
  * @param label - The badge label text
  * @param message - The badge status text
  * @param searchParams - URL query parameters containing optional settings
- * @returns A `BadgenOptions` object ready for generating a badge
+ * @returns A `Format` object ready for generating a badge
  */
 export function getFormat(label: string, message: string, search: URLSearchParams): Format {
     const searchParams = normalize(search);

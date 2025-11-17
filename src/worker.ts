@@ -26,7 +26,7 @@ import { generatedBy, securePolicy } from "./middleware";
  *
  * Registers the route:
  *   GET /:label/:status
- * which produces a badge using the `badgen` library.
+ * which produces a badge using the `badge-maker` library.
  */
 export class BadgeWorker extends RouteWorker {
     /**

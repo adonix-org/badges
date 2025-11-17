@@ -13,8 +13,7 @@
         "cloudflare",
         "workers",
         "cloud-spark",
-        "badges",
-        "badgen"
+        "badges"
     ],
     "repository": {
         "type": "git",
