@@ -4,6 +4,7 @@
 [![Apache 2.0 License](https://badges.adonix.org/License/Apache%202.0)](https://github.com/adonix-org/badges/blob/main/LICENSE)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=adonix-org_badges&metric=alert_status)](https://sonarcloud.io/summary/overall?id=adonix-org_badges&branch=main)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=adonix-org_badges&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=adonix-org_badges)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=adonix-org_badges&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=adonix-org_badges)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=adonix-org_badges&metric=security_rating)](https://sonarcloud.io/summary/overall?id=adonix-org_badges&branch=main)
 
 Generate static SVG badges with [cloud-spark](https://github.com/adonix-org/cloud-spark) and [badgen](https://github.com/badgen/badgen).
