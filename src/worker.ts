@@ -37,7 +37,7 @@ export class BadgeWorker extends RouteWorker {
 
         this.use(generatedBy());
         this.use(securePolicy());
-        // this.use(cache({ getKey }));
+        this.use(cache({ getKey }));
     }
 
     /**
