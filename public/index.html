@@ -21,46 +21,48 @@
 
 <body>
     <main>
-        <div class="badge">
-            <img id="badge-preview" class="badge-preview" alt="Badge preview"
-                src="https://badges.adonix.org/Badge/Generator?scale=3.5"></h1>
+        <div class="card">
+            <div class="badge">
+                <img id="badge-preview" class="badge-preview" alt="Badge preview"
+                    src="https://badges.adonix.org/Badge/Generator?scale=3.5"></h1>
+            </div>
+
+            <div class="field">
+                <label for="label">Label</label>
+                <input type="text" id="label" placeholder="Badge" value="Badge" spellcheck="false" autocorrect="off"
+                    autocomplete="off" autocapitalize="off" />
+            </div>
+
+            <div class="field">
+                <label for="label-color">Label Color</label>
+                <input type="text" id="label-color" placeholder="555" spellcheck="false" autocorrect="off"
+                    autocomplete="off" autocapitalize="off" />
+            </div>
+
+            <div class="field">
+                <label for="status">Status</label>
+                <input type="text" id="status" placeholder="passing" value="Generator" spellcheck="false"
+                    autocorrect="off" autocomplete="off" autocapitalize="off" />
+            </div>
+
+            <div class="field">
+                <label for="color">Color</label>
+                <input type="text" id="color" placeholder="08C" spellcheck="false" autocorrect="off" autocomplete="off"
+                    autocapitalize="off" />
+            </div>
+
+            <div class="field">
+                <label for="style">Style</label>
+                <select id="style">
+                    <option value="">classic</option>
+                    <option value="flat">flat</option>
+                </select>
+            </div>
+
+            <button id="generate" class="generate">Generate</button>
+
+            <div id="url-output">https://badges.adonix.org/Badge/Generator</div>
         </div>
-
-        <div class="field">
-            <label for="label">Label</label>
-            <input type="text" id="label" placeholder="Badge" value="Badge" spellcheck="false" autocorrect="off"
-                autocomplete="off" autocapitalize="off" />
-        </div>
-
-        <div class="field">
-            <label for="label-color">Label Color</label>
-            <input type="text" id="label-color" placeholder="555" spellcheck="false" autocorrect="off"
-                autocomplete="off" autocapitalize="off" />
-        </div>
-
-        <div class="field">
-            <label for="status">Status</label>
-            <input type="text" id="status" placeholder="passing" value="Generator" spellcheck="false" autocorrect="off"
-                autocomplete="off" autocapitalize="off" />
-        </div>
-
-        <div class="field">
-            <label for="color">Color</label>
-            <input type="text" id="color" placeholder="08C" spellcheck="false" autocorrect="off" autocomplete="off"
-                autocapitalize="off" />
-        </div>
-
-        <div class="field">
-            <label for="style">Style</label>
-            <select id="style">
-                <option value="">classic</option>
-                <option value="flat">flat</option>
-            </select>
-        </div>
-
-        <button id="generate" class="generate">Generate</button>
-
-        <div id="url-output">https://badges.adonix.org/Badge/Generator</div>
     </main>
 </body>
 
