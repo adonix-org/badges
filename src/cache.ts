@@ -27,12 +27,12 @@ export const BADGE_CACHE: CacheControl = {
 };
 
 /**
- * Generate stable cache keys for requests.
+ * Generate stable cache keys from requests.
  *
  * @see {@link normalize}
  *
  * @param request - The incoming Request object
- * @returns A URL object with normalized search parameters suitable for caching
+ * @returns A URL key for response caching
  */
 export function getKey(request: Request): URL {
     const url = new URL(request.url);
