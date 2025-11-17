@@ -61,7 +61,7 @@ button {
     padding: 10px 16px;
     font-size: 1rem;
     border: none;
-    background: #0088cc;
+    background: #575757;
     color: white;
     border-radius: 6px;
     flex: 0 0 auto;
@@ -90,7 +90,7 @@ button {
 }
 
 .generate:hover {
-    background: #0077bb;
+    background: #474747;
 }
 
 .generate:active {
