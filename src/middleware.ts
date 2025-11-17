@@ -46,7 +46,7 @@ class GeneratedBy implements Middleware {
      */
     public async handle(_worker: Worker, next: () => Promise<Response>): Promise<Response> {
         const copy = new CopyResponse(await next());
-        copy.setHeader("X-Generator", "Badgen");
+        copy.setHeader("X-Generator", "badge-maker");
         return copy.response();
     }
 }
