@@ -18,13 +18,13 @@ const ROOT = "https://badges.adonix.org";
 
 document.getElementById("generate").onclick = () => {
     const label = document.getElementById("label").value.trim();
-    const status = document.getElementById("status").value.trim();
+    const message = document.getElementById("message").value.trim();
     const labelColor = document.getElementById("label-color").value.trim();
     const color = document.getElementById("color").value.trim();
     const style = document.getElementById("style").value;
 
-    if (!label || !status) {
-        alert("Label and Status are required");
+    if (!label || !message) {
+        alert("Label and Message are required");
         return;
     }
 
@@ -33,11 +33,11 @@ document.getElementById("generate").onclick = () => {
     if (labelColor) params.set("labelColor", labelColor);
     if (style) params.set("style", style);
 
-    const url = `${ROOT}/${encodeURIComponent(label)}/${encodeURIComponent(status)}`;
-
     const query = params.toString();
-    document.getElementById("url-output").innerText = query ? `${url}?${query}` : url;
+    const path = `/${encodeURIComponent(label)}/${encodeURIComponent(message)}`;
 
-    params.set("scale", "3.5");
-    document.getElementById("badge-preview").src = `${url}?${params.toString()}`;
+    document.getElementById("url-output").innerText = query
+        ? `${ROOT}${path}?${query}`
+        : `${ROOT}${path}`;
+    document.getElementById("badge-preview").src = `.${path}?${params.toString()}`;
 };

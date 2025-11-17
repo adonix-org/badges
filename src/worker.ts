@@ -15,9 +15,9 @@
  */
 
 import { cache, GET, PathParams, RouteWorker } from "@adonix.org/cloud-spark";
-import { badgen } from "badgen";
+import { makeBadge } from "badge-maker";
 import { SVGBadge } from "./svg";
-import { getOptions } from "./utils";
+import { getFormat } from "./utils";
 import { getKey } from "./cache";
 import { generatedBy, securePolicy } from "./middleware";
 
@@ -37,7 +37,7 @@ export class BadgeWorker extends RouteWorker {
 
         this.use(generatedBy());
         this.use(securePolicy());
-        this.use(cache({ getKey }));
+        // this.use(cache({ getKey }));
     }
 
     /**
@@ -50,9 +50,9 @@ export class BadgeWorker extends RouteWorker {
     protected generate(params: PathParams): Promise<Response> {
         const searchParams = new URL(this.request.url).searchParams;
 
-        const options = getOptions(params["label"], params["status"], searchParams);
+        const format = getFormat(params["label"], params["status"], searchParams);
 
-        return this.response(SVGBadge, badgen(options));
+        return this.response(SVGBadge, makeBadge(format));
     }
 
     /**
@@ -63,9 +63,9 @@ export class BadgeWorker extends RouteWorker {
      * @returns A Response containing a red 404 badge.
      */
     protected override get(): Promise<Response> {
-        const error = badgen({
+        const error = makeBadge({
             label: "404",
-            status: "Not Found",
+            message: "Not Found",
             color: "red",
         });
         return this.response(SVGBadge, error);

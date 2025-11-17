@@ -14,7 +14,13 @@
  * limitations under the License.
  */
 
-import { BadgenOptions, StyleOption } from "badgen";
+import { Format } from "badge-maker";
+
+const VALID_STYLES = ["plastic", "flat", "flat-square", "for-the-badge", "social"] as const;
+
+type BadgeStyle = (typeof VALID_STYLES)[number];
+
+const VALID_STYLES_SET = new Set<BadgeStyle>(VALID_STYLES);
 
 /** Maximum allowed badge scale to prevent rendering issues */
 const MAX_SCALE = 10;
@@ -29,7 +35,7 @@ const MAX_ICON_WIDTH = 30;
 const DEFAULT_ICON_WIDTH = 13;
 
 /** Whitelisted query parameters allowed for badge generation */
-const VALID_PARAMS = new Set(["style", "color", "labelcolor", "icon", "iconwidth", "scale"]);
+const VALID_PARAMS = new Set(["style", "color", "labelcolor", "logo"]);
 
 /**
  * Escape text for safe SVG injection
@@ -64,52 +70,50 @@ export function normalize(searchParams: URLSearchParams): URLSearchParams {
 }
 
 /**
+ * Type guard to check if a value is a valid badge style:
+ * "plastic" | "flat" | "flat-square" | "for-the-badge" | "social".
+ * ```
+ *
+ * @param value - The value to check.
+ * @returns `true` if `value` is a valid BadgeStyle, otherwise `false`.
+ */
+function isStyle(value: unknown): value is BadgeStyle {
+    return typeof value === "string" && VALID_STYLES_SET.has(value as BadgeStyle);
+}
+
+/**
  * Get the badge style from URL query parameters. Fallback to default
  * "classic" if not present or invalid.
  *
  * @param searchParams - The URLSearchParams object containing query parameters
- * @returns The badge style as a `StyleOption` ("classic" | "flat")
+ * @returns The badge style as a `Style` ("classic" | "flat")
  */
-function getStyle(searchParams: URLSearchParams): StyleOption {
-    return searchParams.get("style") === "flat" ? "flat" : "classic";
+function getStyle(searchParams: URLSearchParams): BadgeStyle | undefined {
+    const style = searchParams.get("style");
+    if (!style) return "flat";
+    if (!isStyle(style)) return "flat";
+    return style;
 }
 
 /**
- * Safely parse a numeric query parameter.
- *
- * @param searchParams - The URLSearchParams object
- * @param key - The parameter name
- * @param fallback - The default value if missing or invalid
- */
-function getNumber(searchParams: URLSearchParams, key: string, fallback: number): number {
-    const n = Number(searchParams.get(key));
-    return n > 0 && Number.isFinite(n) ? n : fallback;
-}
-
-/**
- * Build a `BadgenOptions` object from label, status, and URL query parameters.
+ * Build a `Format` object from label, status, and URL query parameters.
  *
  * Handles default values and parsing for optional parameters like style,
  * colors, icon, and numeric settings.
  *
  * @param label - The badge label text
- * @param status - The badge status text
+ * @param message - The badge status text
  * @param searchParams - URL query parameters containing optional settings
  * @returns A `BadgenOptions` object ready for generating a badge
  */
-export function getOptions(label: string, status: string, search: URLSearchParams): BadgenOptions {
+export function getFormat(label: string, message: string, search: URLSearchParams): Format {
     const searchParams = normalize(search);
     return {
         label,
-        status,
+        labelColor: searchParams.get("labelcolor") ?? "#555",
+        message,
+        color: searchParams.get("color") ?? "#4C1",
         style: getStyle(searchParams),
-        color: searchParams.get("color") ?? undefined,
-        labelColor: searchParams.get("labelcolor") ?? undefined,
-        icon: searchParams.get("icon") ?? undefined,
-        iconWidth: Math.min(
-            getNumber(searchParams, "iconwidth", DEFAULT_ICON_WIDTH),
-            MAX_ICON_WIDTH
-        ),
-        scale: Math.min(getNumber(searchParams, "scale", DEFAULT_SCALE), MAX_SCALE),
+        //logoBase64: searchParams.get("logo") ?? undefined,
     };
 }

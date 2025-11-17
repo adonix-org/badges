@@ -35,6 +35,6 @@
     },
     "dependencies": {
         "@adonix.org/cloud-spark": "^0.0.187",
-        "badgen": "^3.2.3"
+        "badge-maker": "^5.0.2"
     }
 }

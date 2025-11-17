@@ -73,6 +73,7 @@ button {
 
 .badge-preview {
     max-width: 100%;
+    height: 65px;
     object-fit: contain;
     margin: auto;
 }
