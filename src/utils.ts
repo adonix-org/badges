@@ -92,8 +92,8 @@ function getNumber(searchParams: URLSearchParams, key: string, fallback: number)
  * Handles default values and parsing for optional parameters like style,
  * colors, icon, and numeric settings.
  *
- * @param label - The badge label
- * @param status - The badge status
+ * @param label - The badge label text
+ * @param status - The badge status text
  * @param searchParams - URL query parameters containing optional settings
  * @returns A `BadgenOptions` object ready for generating a badge
  */
