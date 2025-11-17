@@ -17,6 +17,6 @@
 import { BadgeWorker } from "./worker";
 
 /**
- * Connect to the Cloudflare runtime.
+ * 3... 2... 1...
  */
 export default BadgeWorker.ignite();

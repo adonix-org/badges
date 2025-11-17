@@ -40,8 +40,8 @@ class GeneratedBy implements Middleware {
     /**
      * Apply an X-Generator header to the response.
      *
-     * @param _worker The current worker instance (unused).
-     * @param next The next response provider in the chain.
+     * @param _worker - The current worker instance (unused).
+     * @param next - The next response provider in the chain.
      * @returns The updated response.
      */
     public async handle(_worker: Worker, next: () => Promise<Response>): Promise<Response> {
@@ -56,8 +56,8 @@ class SecurePolicy implements Middleware {
      * Apply security-related headers (CSP, CORP, no-sniff)
      * to the outgoing response.
      *
-     * @param _worker The current worker instance (unused).
-     * @param next The next response provider in the chain.
+     * @param _worker - The current worker instance (unused).
+     * @param next - The next response provider in the chain.
      * @returns The updated response.
      */
     public async handle(_worker: Worker, next: () => Promise<Response>): Promise<Response> {

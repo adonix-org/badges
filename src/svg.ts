@@ -28,7 +28,7 @@ export class SVGBadge extends SuccessResponse {
      * Constructs a secure `SVGBadge` response.
      *
      * @param svg - The SVG string.
-     * @param cache - Optional cache control headers. Defaults to `s-maxage` of 1 year.
+     * @param cache - Optional cache control headers.
      */
     constructor(svg: string, cache = BADGE_CACHE) {
         super(svg, cache);

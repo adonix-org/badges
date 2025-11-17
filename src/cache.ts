@@ -18,7 +18,7 @@ import { CacheControl, sortSearchParams, Time } from "@adonix.org/cloud-spark";
 import { normalize } from "./utils";
 
 /**
- * Default caching for generated badges is 1 year.
+ * Default caching for generated badges (1 year).
  */
 export const BADGE_CACHE: CacheControl = {
     "max-age": 1 * Time.Year,
@@ -27,12 +27,9 @@ export const BADGE_CACHE: CacheControl = {
 };
 
 /**
- * Generate a deterministic cache key URL for a request.
+ * Generate stable cache keys for requests.
  *
- * Normalizes query parameters by:
- * - Lowercasing all keys
- * - Filtering out invalid keys
- * - Sorting keys alphabetically
+ * @see {@link normalize}
  *
  * @param request - The incoming Request object
  * @returns A URL object with normalized search parameters suitable for caching
