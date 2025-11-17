@@ -23,4 +23,4 @@ Generate static SVG badges with [cloud-spark](https://github.com/adonix-org/clou
 https://badges.adonix.org/Project%20%2B/v1.0.1?color=1976D2
 ```
 
-[![Example](https://badges.adonix.org/Project%20%2B/v1.0.1?color=1976D2&scale=3.5)](https://badges.adonix.org/Project%20%2B/v1.0.1?color=1976D2)
+[![Example](https://badges.adonix.org/Project%20%2B/v1.0.1?color=1976D2&scale=4)](https://badges.adonix.org/Project%20%2B/v1.0.1?color=1976D2)
