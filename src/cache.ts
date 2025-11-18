@@ -45,7 +45,7 @@ export function getKey(request: Request): URL {
     const params = normalize(url.searchParams);
 
     /**
-     * Append a cache version to the key.
+     * Add cache version to the key.
      */
     params.set("_v", CACHE_VERSION);
 
