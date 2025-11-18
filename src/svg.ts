@@ -18,7 +18,7 @@ import { SuccessResponse } from "@adonix.org/cloud-spark";
 import { BADGE_CACHE } from "./cache";
 
 /**
- * A response class for serving SVG content.
+ * A response class for SVG content.
  *
  * The following headers are added to the response:
  * - `Content-Type` : `image/svg+xml; charset=utf-8`
