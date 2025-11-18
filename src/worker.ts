@@ -25,7 +25,7 @@ import { generatedBy, securePolicy } from "./middleware";
  * Worker responsible for generating SVG badges.
  *
  * Registers the route:
- *   GET /:label/:status
+ *   GET /:label/:message
  * which produces a badge using the `badge-maker` library.
  */
 export class BadgeWorker extends RouteWorker {
@@ -33,7 +33,7 @@ export class BadgeWorker extends RouteWorker {
      * Initialize routes and middleware.
      */
     protected override init(): void {
-        this.route(GET, "/:label/:status", this.generate);
+        this.route(GET, "/:label/:message", this.generate);
 
         this.use(generatedBy());
         this.use(securePolicy());
@@ -41,16 +41,16 @@ export class BadgeWorker extends RouteWorker {
     }
 
     /**
-     * Generate an SVG badge for the given label, status,
+     * Generate an SVG badge for the given label, message,
      * and optional search parameters.
      *
-     * @param params - URL path parameters containing `label` and `status`.
+     * @param params - URL path parameters containing `label` and `message`.
      * @returns A Response containing an SVG badge.
      */
     protected generate(params: PathParams): Promise<Response> {
         const searchParams = new URL(this.request.url).searchParams;
 
-        const format = getFormat(params["label"], params["status"], searchParams);
+        const format = getFormat(params["label"], params["message"], searchParams);
 
         return this.response(SVGBadge, makeBadge(format));
     }

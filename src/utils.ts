@@ -96,13 +96,13 @@ function getStyle(searchParams: URLSearchParams): BadgeStyle | undefined {
 }
 
 /**
- * Build a `Format` object from label, status, and URL query parameters.
+ * Build a `Format` object from label, message, and URL query parameters.
  *
  * Handles default values and parsing for optional parameters like style,
  * colors, icon, and numeric settings.
  *
  * @param label - The badge label text
- * @param message - The badge status text
+ * @param message - The badge message text
  * @param searchParams - URL query parameters containing optional settings
  * @returns A `Format` object ready for generating a badge
  */
