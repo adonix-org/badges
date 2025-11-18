@@ -23,26 +23,27 @@
     <main>
         <div class="card">
             <div class="badge">
-                <img id="badge-preview" class="badge-preview" alt="Badge preview"
-                    src="https://badges.adonix.org/Badge/Generator?scale=3.5"></h1>
+                <a id="badge-link" class="badge-link" target="_blank">
+                    <img id="badge-preview" class="badge-preview" alt="Badge preview">
+                </a>
             </div>
 
             <div class="field">
                 <label for="label">Label</label>
-                <input type="text" id="label" placeholder="Badge" value="Badge" spellcheck="false" autocorrect="off"
-                    autocomplete="off" autocapitalize="off" />
+                <input type="text" id="label" placeholder="Badge" spellcheck="false" autocorrect="off"
+                    autocapitalize="off" />
             </div>
 
             <div class="field">
                 <label for="label-color">Label Color</label>
                 <input type="text" id="label-color" placeholder="#555" spellcheck="false" autocorrect="off"
-                    autocomplete="off" autocapitalize="off" />
+                    autocapitalize="off" />
             </div>
 
             <div class="field">
                 <label for="message">Message</label>
-                <input type="text" id="message" placeholder="passing" value="Generator" spellcheck="false"
-                    autocorrect="off" autocomplete="off" autocapitalize="off" />
+                <input type="text" id="message" placeholder="Generator" spellcheck="false" autocorrect="off"
+                    autocomplete="off" autocapitalize="off" />
             </div>
 
             <div class="field">
@@ -54,7 +55,7 @@
             <div class="field">
                 <label for="style">Style</label>
                 <select id="style">
-                    <option value="flat">flat</option>
+                    <option value="">flat</option>
                     <option value="flat-square">flat-square</option>
                     <option value="plastic">plastic</option>
                     <option value="for-the-badge">for-the-badge</option>
@@ -64,7 +65,7 @@
 
             <button id="generate" class="generate">Generate</button>
 
-            <div id="url-output">https://badges.adonix.org/Badge/Generator</div>
+            <div id="url-output"></div>
         </div>
     </main>
 </body>
