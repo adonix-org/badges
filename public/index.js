@@ -20,6 +20,13 @@ document.getElementById("generate").onclick = () => {
     refresh();
 };
 
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("generate").click();
+    }
+});
+
 function refresh() {
     const label = document.getElementById("label").value.trim() || "Badge";
     const message = document.getElementById("message").value.trim() || "Generator";
