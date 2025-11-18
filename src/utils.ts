@@ -25,18 +25,6 @@ type BadgeStyle = (typeof VALID_STYLES)[number];
 /** Set for quick lookup of styles */
 const VALID_STYLES_SET = new Set<BadgeStyle>(VALID_STYLES);
 
-/** Maximum allowed badge scale to prevent rendering issues */
-const MAX_SCALE = 10;
-
-/** Default badge scale when none is provided or invalid */
-const DEFAULT_SCALE = 1;
-
-/** Maximum base icon width (in internal units) for visual balance */
-const MAX_ICON_WIDTH = 30;
-
-/** Default base icon width (in internal units) */
-const DEFAULT_ICON_WIDTH = 13;
-
 /** Whitelisted query parameters allowed for badge generation */
 const VALID_PARAMS = new Set(["style", "color", "labelcolor", "logo"]);
 
