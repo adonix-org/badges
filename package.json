@@ -1,8 +1,8 @@
 {
     "name": "badges",
-    "version": "0.0.1",
+    "version": "1.0.1",
     "private": true,
-    "description": "Generate dynamic SVG badges.",
+    "description": "Generate dynamic SVG badges",
     "license": "Apache-2.0",
     "author": {
         "name": "Ty Busby",
@@ -13,7 +13,8 @@
         "cloudflare",
         "workers",
         "cloud-spark",
-        "badges"
+        "badges",
+        "badge-maker"
     ],
     "repository": {
         "type": "git",
@@ -30,10 +31,10 @@
     },
     "devDependencies": {
         "typescript": "^5.9.3",
-        "wrangler": "^4.47.0"
+        "wrangler": "^4.49.0"
     },
     "dependencies": {
-        "@adonix.org/cloud-spark": "^0.0.187",
+        "@adonix.org/cloud-spark": "^0.0.189",
         "badge-maker": "^5.0.2"
     }
 }

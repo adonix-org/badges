@@ -17,13 +17,14 @@
 import { CacheControl, Time } from "@adonix.org/cloud-spark";
 import { normalize } from "./utils";
 
+const CACHE_VERSION = "1";
+
 /**
- * Default caching for generated badges (1 year).
+ * Default caching for generated badges.
  */
 export const BADGE_CACHE: CacheControl = {
-    "max-age": 1 * Time.Year,
-    "s-maxage": 1 * Time.Year,
-    immutable: true,
+    "max-age": 0 * Time.Day,
+    "s-maxage": 1 * Time.Day,
 };
 
 /**
@@ -36,6 +37,24 @@ export const BADGE_CACHE: CacheControl = {
  */
 export function getKey(request: Request): URL {
     const url = new URL(request.url);
-    url.search = normalize(url.searchParams).toString();
+
+    /**
+     * Valid and sorted user-provided query parameters.
+     */
+    const params = normalize(url.searchParams);
+
+    /**
+     * Append a cache version to the key.
+     */
+    params.set("_v", CACHE_VERSION);
+
+    /**
+     * Sort params again with internal version.
+     */
+    params.sort();
+
+    url.search = params.toString();
+    url.hash = "";
+
     return url;
 }

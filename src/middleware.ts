@@ -65,7 +65,7 @@ class SecurePolicy implements Middleware {
         copy.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
         copy.setHeader(
             "Content-Security-Policy",
-            "default-src 'none'; script-src 'none'; style-src 'none'; img-src 'none';"
+            "default-src 'none'; script-src 'none'; style-src 'none'; img-src 'data:';"
         );
         copy.setHeader("X-Content-Type-Options", "nosniff");
         return copy.response();

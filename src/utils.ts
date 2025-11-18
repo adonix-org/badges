@@ -16,10 +16,13 @@
 
 import { Format } from "badge-maker";
 
+/** Supported badge styles */
 const VALID_STYLES = ["plastic", "flat", "flat-square", "for-the-badge", "social"] as const;
 
+/** Type generated from valid styles */
 type BadgeStyle = (typeof VALID_STYLES)[number];
 
+/** Set for quick lookup of styles */
 const VALID_STYLES_SET = new Set<BadgeStyle>(VALID_STYLES);
 
 /** Maximum allowed badge scale to prevent rendering issues */
@@ -64,9 +67,9 @@ export function normalize(searchParams: URLSearchParams): URLSearchParams {
         .map(([key, value]) => [key.toLowerCase(), escapeSVGText(value)])
         .filter(([key]) => VALID_PARAMS.has(key));
 
-    entries.sort(([a], [b]) => a.localeCompare(b));
-
-    return new URLSearchParams(entries);
+    const params = new URLSearchParams(entries);
+    params.sort();
+    return params;
 }
 
 /**
