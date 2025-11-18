@@ -27,19 +27,15 @@ function refresh() {
     const color = document.getElementById("color").value.trim();
     const style = document.getElementById("style").value;
 
-    const params = new URLSearchParams();
-    if (color) params.set("color", color);
-    if (labelColor) params.set("labelColor", labelColor);
-    if (style) params.set("style", style);
+    const path = `${encodeURIComponent(label)}/${encodeURIComponent(message)}`;
+    const url = new URL(path, globalThis.window.origin);
+    if (color) url.searchParams.set("color", color);
+    if (labelColor) url.searchParams.set("labelColor", labelColor);
+    if (style) url.searchParams.set("style", style);
 
-    const query = params.toString();
-    const url = `${window.location.origin}/${encodeURIComponent(label)}/${encodeURIComponent(
-        message
-    )}${query ? `?${query}` : ""}`;
-
-    document.getElementById("url-output").innerText = url;
-    document.getElementById("badge-preview").src = url;
-    document.getElementById("badge-link").href = url;
+    document.getElementById("url-output").innerText = url.toString();
+    document.getElementById("badge-preview").src = url.toString();
+    document.getElementById("badge-link").href = url.toString();
 }
 
 refresh();
