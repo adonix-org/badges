@@ -17,6 +17,7 @@
 import { CacheControl, Time } from "@adonix.org/cloud-spark";
 import { normalize } from "./utils";
 
+/** Update to retire obsolete cached responses */
 const CACHE_VERSION = "1";
 
 /**
