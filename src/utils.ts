@@ -72,7 +72,6 @@ export function normalize(searchParams: URLSearchParams): URLSearchParams {
 /**
  * Type guard to check if a value is a valid badge style:
  * "plastic" | "flat" | "flat-square" | "for-the-badge" | "social".
- * ```
  *
  * @param value - The value to check.
  * @returns `true` if `value` is a valid BadgeStyle, otherwise `false`.
@@ -114,6 +113,5 @@ export function getFormat(label: string, message: string, search: URLSearchParam
         message,
         color: searchParams.get("color") ?? "#4C1",
         style: getStyle(searchParams),
-        //logoBase64: searchParams.get("logo") ?? undefined,
     };
 }
