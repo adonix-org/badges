@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { CopyResponse, Middleware, Worker } from "@adonix.org/cloud-spark";
+import { CopyResponse, GET, HEAD, Middleware, Worker } from "@adonix.org/cloud-spark";
 
 /**
  * Middleware factory that adds the X-Generator header
@@ -36,38 +36,54 @@ export function securePolicy(): Middleware {
     return new SecurePolicy();
 }
 
-class GeneratedBy implements Middleware {
+/**
+ * Base class for middleware that can modify a response.
+ */
+abstract class ResponseTransform implements Middleware {
     /**
-     * Apply an X-Generator header to the response.
-     *
-     * @param _worker - The current worker instance (unused).
-     * @param next - The next response provider in the chain.
-     * @returns The updated response.
+     * HTTP methods for which this middleware should apply.
+     * Defaults to GET and HEAD.
      */
-    public async handle(_worker: Worker, next: () => Promise<Response>): Promise<Response> {
+    protected getAllowedMethods(): string[] {
+        return [GET, HEAD];
+    }
+
+    /**
+     * Subclasses implement this to modify the response as needed.
+     *
+     * @param worker - The current worker instance.
+     * @param copy - A mutable copy of the response to modify.
+     */
+    protected abstract apply(copy: CopyResponse): void;
+
+    public async handle(worker: Worker, next: () => Promise<Response>): Promise<Response> {
+        if (!this.getAllowedMethods().includes(worker.request.method)) return next();
+
         const copy = new CopyResponse(await next());
-        copy.setHeader("X-Generator", "badge-maker");
+        this.apply(copy);
         return copy.response();
     }
 }
 
-class SecurePolicy implements Middleware {
-    /**
-     * Apply security-related headers (CSP, CORP, no-sniff)
-     * to the outgoing response.
-     *
-     * @param _worker - The current worker instance (unused).
-     * @param next - The next response provider in the chain.
-     * @returns The updated response.
-     */
-    public async handle(_worker: Worker, next: () => Promise<Response>): Promise<Response> {
-        const copy = new CopyResponse(await next());
+/**
+ * Adds an X-Generator header to the response.
+ */
+export class GeneratedBy extends ResponseTransform {
+    protected apply(copy: CopyResponse): void {
+        copy.setHeader("X-Generator", "badge-maker");
+    }
+}
+
+/**
+ * Applies strict security headers to the response.
+ */
+export class SecurePolicy extends ResponseTransform {
+    protected apply(copy: CopyResponse): void {
         copy.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
         copy.setHeader(
             "Content-Security-Policy",
             "default-src 'none'; script-src 'none'; style-src 'none'; img-src data:"
         );
         copy.setHeader("X-Content-Type-Options", "nosniff");
-        return copy.response();
     }
 }
