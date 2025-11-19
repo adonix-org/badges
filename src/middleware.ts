@@ -49,10 +49,10 @@ abstract class ResponseTransform implements Middleware {
     }
 
     /**
-     * Subclasses implement this to modify the response as needed.
+     * Subclasses implement this to modify the response.
      *
      * @param worker - The current worker instance.
-     * @param copy - A mutable copy of the response to modify.
+     * @param copy - A mutable copy of the response.
      */
     protected abstract apply(copy: CopyResponse): void;
 
