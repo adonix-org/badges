@@ -68,7 +68,7 @@ abstract class ResponseTransform implements Middleware {
 /**
  * Adds an X-Generator header to the response.
  */
-export class GeneratedBy extends ResponseTransform {
+class GeneratedBy extends ResponseTransform {
     protected apply(copy: CopyResponse): void {
         copy.setHeader("X-Generator", "badge-maker");
     }
@@ -77,7 +77,7 @@ export class GeneratedBy extends ResponseTransform {
 /**
  * Applies strict security headers to the response.
  */
-export class SecurePolicy extends ResponseTransform {
+class SecurePolicy extends ResponseTransform {
     protected apply(copy: CopyResponse): void {
         copy.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
         copy.setHeader(
