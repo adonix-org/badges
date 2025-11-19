@@ -9,6 +9,13 @@
 
 Generate static SVG badges with [cloud-spark](https://github.com/adonix-org/cloud-spark) and [badge-maker](https://github.com/badges/shields/tree/master/badge-maker).
 
+## Path Parameters:
+
+| Property  | Supported Values / Type | Description                                        |
+| --------- | ----------------------- | -------------------------------------------------- |
+| `label`   | String                  | Text displayed on the **left side** of the badge.  |
+| `message` | String                  | Text displayed on the **right side** of the badge. |
+
 ## Query Parameters:
 
 | Property     | Supported Values / Type                                               | Description                                                                                    |
