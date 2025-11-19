@@ -7,7 +7,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=adonix-org_badges&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=adonix-org_badges)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=adonix-org_badges&metric=security_rating)](https://sonarcloud.io/summary/overall?id=adonix-org_badges&branch=main)
 
-Generate static SVG badges with [cloud-spark](https://github.com/adonix-org/cloud-spark) and [badge-maker](https://github.com/badges/shields/tree/master/badge-maker).
+[Generate](https://badges.adonix.org) static SVG badges with [cloud-spark](https://github.com/adonix-org/cloud-spark) and [badge-maker](https://github.com/badges/shields/tree/master/badge-maker).
 
 ## Path Parameters:
 
