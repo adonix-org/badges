@@ -19,7 +19,6 @@ import { makeBadge } from "badge-maker";
 import { SVGBadge } from "./svg";
 import { getFormat } from "./utils";
 import { getKey } from "./cache";
-import { generatedBy, securePolicy } from "./middleware";
 
 /**
  * Worker responsible for generating SVG badges.
@@ -35,8 +34,6 @@ export class BadgeWorker extends RouteWorker {
     protected override init(): void {
         this.route(GET, "/:label/:message", this.generate);
 
-        this.use(generatedBy());
-        this.use(securePolicy());
         this.use(cache({ getKey }));
     }
 

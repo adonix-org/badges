@@ -24,6 +24,10 @@ import { BADGE_CACHE } from "./cache";
  * - `Content-Type` : `image/svg+xml; charset=utf-8`
  * - `Cache-Control` : Default {@link BADGE_CACHE}
  * - `Last-Modified` : Current DateTime UTC
+ * - `Cross-Origin-Resource-Policy` : `cross-origin`
+ * - `Content-Security-Policy` : `script-src 'none';`
+ * - `X-Content-Type-Options` : `nosniff`
+ * - `X-Generator` : `badge-maker`
  */
 export class SVGBadge extends SuccessResponse {
     /**
@@ -34,7 +38,19 @@ export class SVGBadge extends SuccessResponse {
      */
     constructor(svg: string, cache = BADGE_CACHE) {
         super(svg, cache);
-        this.mediaType = "image/svg+xml; charset=utf-8";
+        this.mediaType = "image/svg+xml;charset=utf-8";
         this.setHeader("Last-Modified", new Date().toUTCString());
+
+        /**
+         * Apply security headers.
+         */
+        this.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+        this.setHeader("Content-Security-Policy", "script-src 'none';");
+        this.setHeader("X-Content-Type-Options", "nosniff");
+
+        /**
+         * Badge generation by `badge-maker`.
+         */
+        this.setHeader("X-Generator", "badge-maker");
     }
 }
