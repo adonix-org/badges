@@ -34,7 +34,7 @@
         "wrangler": "^4.49.0"
     },
     "dependencies": {
-        "@adonix.org/cloud-spark": "^0.0.189",
+        "@adonix.org/cloud-spark": "^0.0.190",
         "badge-maker": "^5.0.2"
     }
 }
