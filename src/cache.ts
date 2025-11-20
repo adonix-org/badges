@@ -50,7 +50,7 @@ export function getKey(request: Request): URL {
     params.set("_v", CACHE_VERSION);
 
     /**
-     * Sort params again with internal version.
+     * Sort params with internal version.
      */
     params.sort();
 

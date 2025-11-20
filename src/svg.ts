@@ -21,7 +21,7 @@ import { BADGE_CACHE } from "./cache";
  * A response class for SVG content.
  *
  * The following headers are added to the response:
- * - `Content-Type` : `image/svg+xml; charset=utf-8`
+ * - `Content-Type` : `image/svg+xml;charset=utf-8`
  * - `Cache-Control` : Default {@link BADGE_CACHE}
  * - `Last-Modified` : Current DateTime UTC
  * - `Cross-Origin-Resource-Policy` : `cross-origin`

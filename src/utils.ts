@@ -45,7 +45,7 @@ function escapeSVGText(str: string): string {
  *
  * - Converts all parameter keys to lowercase.
  * - Removes any parameters that are not recognized/valid.
- * - Sorts the remaining entries alphabetically for deterministic ordering.
+ * - Escapes user-provided values.
  *
  * @param searchParams - The original URLSearchParams
  * @returns A new URLSearchParams instance with lowercase, valid, and sorted keys
@@ -55,14 +55,11 @@ export function normalize(searchParams: URLSearchParams): URLSearchParams {
         .map(([key, value]) => [key.toLowerCase(), escapeSVGText(value)])
         .filter(([key]) => VALID_PARAMS.has(key));
 
-    const params = new URLSearchParams(entries);
-    params.sort();
-    return params;
+    return new URLSearchParams(entries);
 }
 
 /**
- * Type guard to check if a value is a valid badge style:
- * "plastic" | "flat" | "flat-square" | "for-the-badge" | "social".
+ * Type guard to check if a value is a valid badge style.
  *
  * @param value - The value to check.
  * @returns `true` if `value` is a valid BadgeStyle, otherwise `false`.
@@ -73,10 +70,10 @@ function isStyle(value: unknown): value is BadgeStyle {
 
 /**
  * Get the badge style from URL query parameters. Fallback to default
- * "classic" if not present or invalid.
+ * `flat` if not present or invalid.
  *
  * @param searchParams - The URLSearchParams object containing query parameters
- * @returns The badge style as a `Style` ("classic" | "flat")
+ * @returns The badge style as a `BadgeStyle`
  */
 function getStyle(searchParams: URLSearchParams): BadgeStyle | undefined {
     const style = searchParams.get("style");
