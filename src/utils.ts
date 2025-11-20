@@ -65,10 +65,10 @@ export function normalize(searchParams: URLSearchParams): URLSearchParams {
 }
 
 /**
- * Type guard to check if a value is a valid badge style.
+ * Type guard to check if a value is a valid `BadgeStyle`.
  *
  * @param value - The value to check.
- * @returns `true` if `value` is a valid BadgeStyle, otherwise `false`.
+ * @returns `true` if `value` is a valid `BadgeStyle`, otherwise `false`.
  */
 function isStyle(value: unknown): value is BadgeStyle {
     return typeof value === "string" && VALID_STYLES_SET.has(value as BadgeStyle);
