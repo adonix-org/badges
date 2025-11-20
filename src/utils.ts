@@ -26,7 +26,7 @@ type BadgeStyle = (typeof VALID_STYLES)[number];
 const VALID_STYLES_SET = new Set<BadgeStyle>(VALID_STYLES);
 
 /** Whitelisted query parameters allowed for badge generation */
-const VALID_PARAMS = new Set(["style", "color", "labelcolor", "logo"]);
+const VALID_PARAMS = new Set(["color", "labelcolor", "style"]);
 
 /**
  * Escape text for safe SVG injection
@@ -43,19 +43,25 @@ function escapeSVGText(str: string): string {
 /**
  * Normalize URLSearchParams for consistent processing and caching.
  *
- * - Converts all parameter keys to lowercase.
- * - Removes any parameters that are not recognized/valid.
+ * - Converts all keys to lowercase.
+ * - Removes any parameters with unsupported keys.
+ * - Removes duplicate keys keeping the first.
  * - Escapes user-provided values.
  *
  * @param searchParams - The original URLSearchParams
- * @returns A new URLSearchParams instance with lowercase, valid, and sorted keys
+ * @returns A normalized URLSearchParams instance.
  */
 export function normalize(searchParams: URLSearchParams): URLSearchParams {
-    const entries = Array.from(searchParams.entries())
-        .map(([key, value]) => [key.toLowerCase(), escapeSVGText(value)])
-        .filter(([key]) => VALID_PARAMS.has(key));
+    const normalized = new URLSearchParams();
 
-    return new URLSearchParams(entries);
+    for (const [rawKey, rawValue] of searchParams.entries()) {
+        const key = rawKey.toLowerCase();
+        if (VALID_PARAMS.has(key) && !normalized.has(key)) {
+            normalized.set(key, escapeSVGText(rawValue));
+        }
+    }
+
+    return normalized;
 }
 
 /**
