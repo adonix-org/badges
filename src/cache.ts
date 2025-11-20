@@ -40,7 +40,7 @@ export function getKey(request: Request): URL {
     const url = new URL(request.url);
 
     /**
-     * Valid and sorted user-provided query parameters.
+     * Normalize user-provided query parameters.
      */
     const params = normalize(url.searchParams);
 
