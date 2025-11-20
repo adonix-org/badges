@@ -45,7 +45,7 @@ function escapeSVGText(str: string): string {
  *
  * - Converts all keys to lowercase.
  * - Removes any parameters with unsupported keys.
- * - Removes duplicate keys keeping the first.
+ * - Removes duplicate keys, keeping the first.
  * - Escapes user-provided values.
  *
  * @param searchParams - The original URLSearchParams
