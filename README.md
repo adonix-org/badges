@@ -13,8 +13,8 @@
 
 | Property  | Supported Values / Type | Description                                        |
 | --------- | ----------------------- | -------------------------------------------------- |
-| `label`   | String                  | Text displayed on the **left side** of the badge.  |
-| `message` | String                  | Text displayed on the **right side** of the badge. |
+| `:label`   | String                  | Text displayed on the **left side** of the badge.  |
+| `:message` | String                  | Text displayed on the **right side** of the badge. |
 
 ## Query Parameters:
 
