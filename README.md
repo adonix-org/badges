@@ -11,14 +11,14 @@
 
 ## Path Parameters:
 
-| Property  | Supported Values / Type | Description                                        |
-| --------- | ----------------------- | -------------------------------------------------- |
+| Parameter  | Supported Values / Type | Description                                        |
+| ---------- | ----------------------- | -------------------------------------------------- |
 | `:label`   | String                  | Text displayed on the **left side** of the badge.  |
 | `:message` | String                  | Text displayed on the **right side** of the badge. |
 
 ## Query Parameters:
 
-| Property     | Supported Values / Type                                               | Description                                                                                    |
+| Parameter    | Supported Values / Type                                               | Description                                                                                    |
 | ------------ | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `style`      | `"flat"`, `"flat-square"`, `"plastic"`, `"for-the-badge"`, `"social"` | Determines the visual style of the badge.                                                      |
 | `color`      | String (e.g., `"green"`, `"red"`, `"555"`)                            | Background color of the badge's **message** section. Can be named color, hex, or numeric code. |
