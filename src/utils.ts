@@ -23,7 +23,7 @@ const VALID_STYLES = ["plastic", "flat", "flat-square", "for-the-badge", "social
 type BadgeStyle = (typeof VALID_STYLES)[number];
 
 /** Set for quick lookup of styles */
-const VALID_STYLES_SET = new Set<BadgeStyle>(VALID_STYLES);
+const VALID_STYLES_SET = new Set<string>(VALID_STYLES);
 
 /** Whitelisted query parameters allowed for badge generation */
 const VALID_PARAMS = new Set(["color", "labelcolor", "style"]);
@@ -71,7 +71,7 @@ export function normalize(searchParams: URLSearchParams): URLSearchParams {
  * @returns `true` if `value` is a valid `BadgeStyle`, otherwise `false`.
  */
 function isStyle(value: unknown): value is BadgeStyle {
-    return typeof value === "string" && VALID_STYLES_SET.has(value as BadgeStyle);
+    return typeof value === "string" && VALID_STYLES_SET.has(value);
 }
 
 /**
