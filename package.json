@@ -31,10 +31,10 @@
     },
     "devDependencies": {
         "typescript": "^5.9.3",
-        "wrangler": "^4.49.1"
+        "wrangler": "^4.50.0"
     },
     "dependencies": {
-        "@adonix.org/cloud-spark": "^0.0.190",
+        "@adonix.org/cloud-spark": "^0.0.194",
         "badge-maker": "^5.0.2"
     }
 }

@@ -18,7 +18,7 @@
     "$schema": "node_modules/wrangler/config-schema.json",
     "name": "badges",
     "main": "src/index.ts",
-    "compatibility_date": "2025-11-13",
+    "compatibility_date": "2025-11-22",
     "observability": {
         "enabled": true
     },
