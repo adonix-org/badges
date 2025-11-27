@@ -21,8 +21,8 @@
 | Parameter    | Supported Values / Type                                               | Description                                                                                    |
 | ------------ | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `style`      | `"flat"`, `"flat-square"`, `"plastic"`, `"for-the-badge"`, `"social"` | Determines the visual style of the badge.                                                      |
-| `color`      | String (e.g., `"green"`, `"red"`, `"555"`)                            | Background color of the badge's **message** section. Can be named color, hex, or numeric code. |
 | `labelColor` | String (e.g., `"blue"`, `"555"`)                                      | Background color of the **label** section of the badge.                                        |
+| `color`      | String (e.g., `"green"`, `"red"`, `"555"`)                            | Background color of the badge's **message** section. Can be named color, hex, or numeric code. |
 
 ## Example:
 
