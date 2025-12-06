@@ -24,8 +24,8 @@ const CACHE_VERSION = "1";
  * Default caching for generated badges.
  */
 export const BADGE_CACHE: CacheControl = {
-    "max-age": 5 * Time.Day,
-    "s-maxage": 5 * Time.Day,
+    "max-age": 1 * Time.Month,
+    "s-maxage": 1 * Time.Month,
 };
 
 /**
