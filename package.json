@@ -1,6 +1,6 @@
 {
     "name": "badges",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "private": true,
     "description": "Generate dynamic SVG badges",
     "license": "Apache-2.0",
@@ -35,7 +35,7 @@
         "wrangler": "^4.54.0"
     },
     "dependencies": {
-        "@adonix.org/cloud-spark": "^2.0.3",
+        "@adonix.org/cloud-spark": "^2.0.4",
         "badge-maker": "^5.0.2"
     }
 }

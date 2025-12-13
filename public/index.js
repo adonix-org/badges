@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-const ROOT = "https://badges.adonix.org";
-
 document.getElementById("generate").onclick = () => {
     refresh();
 };
@@ -34,7 +32,7 @@ function refresh() {
     const color = document.getElementById("color").value.trim();
     const style = document.getElementById("style").value;
 
-    const path = `${encodeURIComponent(label)}/${encodeURIComponent(message)}`;
+    const path = `/badge/${encodeURIComponent(label)}/${encodeURIComponent(message)}`;
     const url = new URL(path, globalThis.window.origin);
     if (color) url.searchParams.set("color", color);
     if (labelColor) url.searchParams.set("labelColor", labelColor);

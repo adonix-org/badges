@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { SuccessResponse } from "@adonix.org/cloud-spark";
+import { StatusCodes, SuccessResponse } from "@adonix.org/cloud-spark";
 import { BADGE_CACHE } from "./cache";
 
 /**
@@ -36,8 +36,8 @@ export class SVGBadge extends SuccessResponse {
      * @param svg - The SVG string.
      * @param cache - Optional cache control headers.
      */
-    constructor(svg: string, cache = BADGE_CACHE) {
-        super(svg, cache);
+    constructor(svg: string, cache = BADGE_CACHE, status = StatusCodes.OK) {
+        super(svg, cache, status);
         this.mediaType = "image/svg+xml;charset=utf-8";
         this.setHeader("Last-Modified", new Date().toUTCString());
 

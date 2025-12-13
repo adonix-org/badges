@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-import { GET, PathParams, RouteWorker } from "@adonix.org/cloud-spark";
+import { CacheControl, GET, PathParams, RouteWorker, StatusCodes } from "@adonix.org/cloud-spark";
 import { cache } from "@adonix.org/cloud-spark/cache";
-import { makeBadge } from "badge-maker";
 import { SVGBadge } from "./svg";
 import { getFormat } from "./utils";
 import { getKey } from "./cache";
+import { SVG_404 } from "./constant";
 
 /**
  * Worker responsible for generating SVG badges.
  *
  * Registers the route:
- *   GET /:label/:message
+ *   GET /badge/:label/:message
  * which produces a badge using the `badge-maker` library.
  */
 export class BadgeWorker extends RouteWorker {
@@ -33,7 +33,7 @@ export class BadgeWorker extends RouteWorker {
      * Initialize routes and middleware.
      */
     protected override init(): void {
-        this.route(GET, "/:label/:message", this.generate);
+        this.route(GET, "/badge/:label/:message", this.generate);
 
         this.use(cache({ getKey }));
     }
@@ -45,28 +45,19 @@ export class BadgeWorker extends RouteWorker {
      * @param params - URL path parameters containing `label` and `message`.
      * @returns A Response containing an SVG badge.
      */
-    protected generate(params: PathParams): Promise<Response> {
+    protected async generate(params: PathParams): Promise<Response> {
         const searchParams = new URL(this.request.url).searchParams;
 
         const format = getFormat(params["label"], params["message"], searchParams);
 
+        const { makeBadge } = await import("badge-maker");
         return this.response(SVGBadge, makeBadge(format));
     }
 
     /**
      * Default handler for unmatched GET routes.
-     *
-     * Returns a simple “404 Not Found” badge.
-     *
-     * @returns An SVG Response containing a red 404 badge.
      */
     protected override get(): Promise<Response> {
-        const error = makeBadge({
-            label: "404",
-            message: "Not Found",
-            style: "flat-square",
-            color: "red",
-        });
-        return this.response(SVGBadge, error);
+        return this.response(SVGBadge, SVG_404, CacheControl.DISABLE, StatusCodes.NOT_FOUND);
     }
 }
