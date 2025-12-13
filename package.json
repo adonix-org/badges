@@ -27,14 +27,15 @@
     "scripts": {
         "deploy": "tsc && wrangler deploy",
         "dev": "wrangler dev",
+        "build": "wrangler build",
         "types": "wrangler types ./types/wrangler.d.ts"
     },
     "devDependencies": {
         "typescript": "^5.9.3",
-        "wrangler": "^4.53.0"
+        "wrangler": "^4.54.0"
     },
     "dependencies": {
-        "@adonix.org/cloud-spark": "^1.0.1",
+        "@adonix.org/cloud-spark": "^2.0.3",
         "badge-maker": "^5.0.2"
     }
 }

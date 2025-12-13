@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { cache, GET, PathParams, RouteWorker } from "@adonix.org/cloud-spark";
+import { GET, PathParams, RouteWorker } from "@adonix.org/cloud-spark";
+import { cache } from "@adonix.org/cloud-spark/cache";
 import { makeBadge } from "badge-maker";
 import { SVGBadge } from "./svg";
 import { getFormat } from "./utils";
