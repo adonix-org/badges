@@ -19,7 +19,7 @@ import { cache } from "@adonix.org/cloud-spark/cache";
 import { SVGBadge } from "./svg";
 import { getFormat } from "./utils";
 import { getKey } from "./cache";
-import { SVG_404 } from "./constant";
+import { SVG_404 } from "./constants";
 
 /**
  * Worker responsible for generating SVG badges.
