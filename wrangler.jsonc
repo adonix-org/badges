@@ -22,6 +22,7 @@
     "observability": {
         "enabled": true
     },
+    "minify": true,
     "placement": { "mode": "smart" },
     "workers_dev": false,
     "preview_urls": false,
