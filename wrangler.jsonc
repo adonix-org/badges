@@ -27,5 +27,6 @@
     "workers_dev": false,
     "preview_urls": false,
     "compatibility_flags": ["nodejs_compat"],
-    "assets": { "directory": "./public/", "binding": "public" }
+    "assets": { "directory": "./public/", "binding": "public" },
+    "routes": [{ "pattern": "badges.adonix.org", "custom_domain": true }]
 }
