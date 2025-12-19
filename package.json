@@ -25,12 +25,15 @@
         "url": "https://github.com/adonix-org/badges/issues"
     },
     "scripts": {
+        "types": "mkdir -p ./types && wrangler types --config wrangler.jsonc ./types/cloudflare.d.ts",
+        "prebuild": "npm run types",
+        "build": "wrangler build",
         "deploy": "tsc && wrangler deploy",
         "dev": "wrangler dev",
-        "build": "wrangler build",
-        "types": "wrangler types ./types/wrangler.d.ts"
+        "start": "wrangler dev"
     },
     "devDependencies": {
+        "@types/node": "^25.0.3",
         "typescript": "^5.9.3",
         "wrangler": "^4.56.0"
     },
