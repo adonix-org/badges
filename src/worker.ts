@@ -35,7 +35,7 @@ export class BadgeWorker extends RouteWorker {
     protected override init(): void {
         this.route(GET, "/badge/:label/:message", this.generate);
 
-        this.use(cache({ getKey }));
+        this.use(cache({ getKey, debug: true }));
     }
 
     /**
