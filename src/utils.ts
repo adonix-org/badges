@@ -81,7 +81,7 @@ function isStyle(value: unknown): value is BadgeStyle {
  * @param searchParams - The URLSearchParams object containing query parameters
  * @returns The badge style as a `BadgeStyle`
  */
-function getStyle(searchParams: URLSearchParams): BadgeStyle | undefined {
+function getStyle(searchParams: URLSearchParams): BadgeStyle {
     const style = searchParams.get("style");
     if (!style) return "flat";
     if (!isStyle(style)) return "flat";
