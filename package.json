@@ -35,7 +35,7 @@
     "devDependencies": {
         "@types/node": "^25.0.3",
         "typescript": "^5.9.3",
-        "wrangler": "^4.56.0"
+        "wrangler": "^4.58.0"
     },
     "dependencies": {
         "@adonix.org/cloud-spark": "^2.1.2",
